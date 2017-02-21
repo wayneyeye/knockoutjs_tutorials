@@ -1,0 +1,24 @@
+<h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2>
+
+<table>
+    <thead><tr>
+        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+    </tr></thead>
+    <!-- Todo: Generate table body -->
+    <tbody data-bind="foreach: seats">
+    <tr>
+        <td><input data-bind="value: name" /></td>
+        <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td> //$root change scope to top model in knockoutjs 
+        //This code uses two new bindings, options and optionsText, which together control both the set of available items in a dropdown list, and which object property (in this case, mealName) is used to represent each item on screen.
+        <td data-bind="text: formattedPrice"></td>
+        <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td> //Note that the $root. prefix causes Knockout to look for a removeSeat handler on your top-level viewmodel instead of on the SeatReservation instance being bound  
+    </tr>   
+    </tbody>
+</table>
+<h3 data-bind="visible: totalSurcharge() > 0">
+    Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+</h3>
+
+<--!The visible binding makes an element visible or invisible as your data changes (internally, it modifies the element's CSS display style). In this case, we choose to show the "total surcharge" information only if it's greater than zero.
+You can use arbitrary JavaScript expressions inside declarative bindings. Here, we used  totalSurcharge() > 0 and totalSurcharge().toFixed(2). Internally, this actually defines a computed property to represent the output from that expression. It's just a very lightweight and convenient syntactical alternative.
+<button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>-->
