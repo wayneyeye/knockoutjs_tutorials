@@ -1,1 +1,16 @@
+<h3 data-bind="text: question"></h3>
+<p>Please distribute <b data-bind="text: pointsBudget"></b> points between the following options.</p>
 
+<table>
+    <thead><tr><th>Option</th><th>Importance</th></tr></thead>
+    <tbody data-bind="foreach: answers">
+        <tr>
+            <td data-bind="text: answerText"></td>
+            <td><select data-bind="options: [1,2,3,4,5], value: points"></select></td>
+        </tr>    
+    </tbody>
+</table>
+
+<h3 data-bind="fadeVisible: pointsUsed() > pointsBudget">You've used too many points! Please remove some.</h3>
+<p>You've got <b data-bind="text: pointsBudget - pointsUsed()"></b> points left to use.</p>
+<button data-bind="enable: pointsUsed() <= pointsBudget, click: save">Finished</button>
