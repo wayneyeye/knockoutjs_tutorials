@@ -10,7 +10,7 @@ Subsequent tutorials will take you much deeper :)
 - 2
 Final niceties
 Having followed the MVVM pattern and got an object-oriented representation of the UI's data and behaviors, you're in a great position to sprinkle on extra behaviors in a very natural and convenient way.
-For example, if you're asked to display the total number of seats being reserved, you can implement that in just a single place, and you don't have to write any extra code to make the seat count update when you add or remove items. Just update the <h2> at the top of your view:
+For example, if you're asked to display the total number of seats being reserved, you can implement that in just a single place, and you don't have to write any extra code to make the seat count update when you add or remove items. Just update the '<h2>' at the top of your view:
 
 <!-- <h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2> -->
 
